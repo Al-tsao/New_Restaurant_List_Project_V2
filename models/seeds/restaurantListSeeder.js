@@ -1,6 +1,6 @@
 const mongoose = require('mongoose') // 載入 mongoose
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
-const listGenerated = require('../restaurantList.js') // 載入 restaurantList
+const listGenerated = require('../restaurantList.js') // 載入 restaurantList.js
 const restaurantList = require('./restaurant.json')
 
 // mongoDB資料連線

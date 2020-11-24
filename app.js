@@ -5,6 +5,7 @@ const port = 3000
 const bodyParser = require('body-parser') //讓express可以用POST
 const mongoose = require('mongoose') // 載入 mongoose
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
+const listGenerated = require('./models/restaurantList.js') // 載入 restaurantList.js
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
@@ -13,7 +14,7 @@ const exphbs = require('express-handlebars')
 // const gTrashTalk = require('./generate_trashTalk.js')
 
 // 引入Jason檔案
-const restaurantList = require('./restaurant.json')
+// const restaurantList = require('./restaurant.json')
 
 // 為了要使用register helper而引入
 // const handlebars = require('handlebars')
@@ -51,23 +52,28 @@ db.once('open', () => {
 // =========== routes setting Start ===========
 // 進入index頁面
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  listGenerated.find()
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(rList /* rList是清理過後的陣列 */ => {
+      res.render('index', { restaurants: rList })
+    }) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
 })
 // 進入show頁面
-app.get('/show/:restaurant_id', (req, res) => { /* params 動態路由 */
-  const restaurant = restaurantList.results.find(restaurant => {
-    return restaurant.id.toString() === req.params.restaurant_id
-  })
-  res.render('show', { restaurant: restaurant })
-})
-//搜尋電影並將結果列表顯示 
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
-})
+// app.get('/show/:restaurant_id', (req, res) => { /* params 動態路由 */
+//   const restaurant = restaurantList.results.find(restaurant => {
+//     return restaurant.id.toString() === req.params.restaurant_id
+//   })
+//   res.render('show', { restaurant: restaurant })
+// })
+//搜尋餐廳並將結果列表顯示 
+// app.get('/search', (req, res) => {
+//   const keyword = req.query.keyword
+//   const restaurants = restaurantList.results.filter(restaurant => {
+//     return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+//   })
+//   res.render('index', { restaurants: restaurants, keyword: keyword })
+// })
 // =========== routes setting End ===========
 
 // start and listen on the Express server
