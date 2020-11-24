@@ -60,12 +60,15 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 // 進入show頁面
-// app.get('/show/:restaurant_id', (req, res) => { /* params 動態路由 */
-//   const restaurant = restaurantList.results.find(restaurant => {
-//     return restaurant.id.toString() === req.params.restaurant_id
-//   })
-//   res.render('show', { restaurant: restaurant })
-// })
+app.get('/show/:id', (req, res) => {
+  const id = req.params.id
+  listGenerated.findById(id)
+    .lean()
+    .then(rList => {
+      res.render('show', { restaurant: rList })
+    }) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理)
+})
 //搜尋餐廳並將結果列表顯示 
 // app.get('/search', (req, res) => {
 //   const keyword = req.query.keyword

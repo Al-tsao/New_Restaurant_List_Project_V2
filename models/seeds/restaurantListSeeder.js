@@ -17,4 +17,4 @@ db.once('open', () => {
     listGenerated.create(element) //
   });
 })
-// 反正Schema裡面的設定就是一個物件，所以直接把restaurant.json中的物件拋進去就可以了
+// 反正Schema裡面的設定就是一個物件，所以直接把restaurant.json中的物件拋進去就可以了，而且JSON的項目可以比較多，Schema的項目可以比較少
