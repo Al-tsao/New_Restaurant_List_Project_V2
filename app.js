@@ -23,7 +23,9 @@ app.get('/', (req, res) => {
 })
 // 進入show頁面
 app.get('/show/:restaurant_id', (req, res) => { /* params 動態路由 */
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
+  const restaurant = restaurantList.results.find(restaurant => {
+    return restaurant.id.toString() === req.params.restaurant_id
+  })
   res.render('show', { restaurant: restaurant })
 })
 //搜尋電影並將結果列表顯示 
@@ -32,7 +34,6 @@ app.get('/search', (req, res) => {
   const restaurants = restaurantList.results.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
   })
-  console.log("filter list", restaurants)
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 // =========== routes setting End ===========
