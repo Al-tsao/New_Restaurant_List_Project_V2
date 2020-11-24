@@ -2,12 +2,19 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser') //讓express可以用POST
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
 
+// 載入同層的JS檔
+// const gTrashTalk = require('./generate_trashTalk.js')
+
 // 引入Jason檔案
 const restaurantList = require('./restaurant.json')
+
+// 為了要使用register helper而引入
+// const handlebars = require('handlebars')
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -15,6 +22,17 @@ app.set('view engine', 'handlebars')
 
 // setting static files 設定 Express 路由以提供靜態檔案(就是讓CSS或者是JS可以使用)
 app.use(express.static('public'))
+
+// setting body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// register helper
+// handlebars.registerHelper('ifEqual', function (job, targetJob, options) {
+//   if (job === targetJob) {
+//     return options.fn(this)
+//   }
+//   return options.inverse(this)
+// })
 
 // =========== routes setting Start ===========
 // 進入index頁面
