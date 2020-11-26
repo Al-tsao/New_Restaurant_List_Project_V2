@@ -99,3 +99,9 @@ header {
   }
   
 }
+
+/* 以下非公版新增 */
+.info-bar{
+  max-width: 680px;
+  margin: 1em auto;
+}

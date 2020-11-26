@@ -82,6 +82,18 @@ app.get('/search', (req, res) => {
     }) // 將資料傳給 index 樣板
     .catch(error => console.error(error)) // 錯誤處理
 })
+// 進入new頁面
+app.get('/new', (req, res) => {
+  res.render('new')
+})
+// 送出new頁面資料到MongoDB
+app.post('/new/create', (req, res) => {
+  const newRestaurenat = req.body       // 從 req.body 拿出表單裡的 name 資料
+  console.log(newRestaurenat)
+  return listGenerated.create(newRestaurenat)     // 存入資料庫，create(這裡面的格式要是物件)
+    .then(() => res.redirect('/')) // 新增完成後導回首頁
+    .catch(error => console.log(error))
+})
 // =========== routes setting End ===========
 
 // start and listen on the Express server
