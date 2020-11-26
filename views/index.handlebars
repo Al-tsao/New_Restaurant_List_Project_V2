@@ -46,8 +46,41 @@
                 <div class="row justify-content-end">
                   <a href="/show/{{this._id}}" class="btn btn-outline-info">Detail</a>
                   <a href="#" class="btn btn-outline-dark ml-2">Edit</a>
-                  <a href="#" class="btn btn-outline-danger ml-2"><i class="fas fa-trash-alt"
-                      style="font-size: 16px;"></i></a>
+                  <form action="/delete/{{ this._id }}" method="GET" onsubmit="return deleteAlert()">
+                    <button type="submit" class="btn btn-outline-danger ml-2">
+                      <i class="fas fa-trash-alt" style="font-size: 16px;"></i>
+                    </button>
+                  </form>
+
+
+                  <!-- Button trigger modal -->
+                  <!--<button type="button" class="btn btn-outline-danger ml-2" data-toggle="modal"
+                    data-target="#deleteButton" value="{{this._id}}">
+                    <i class="fas fa-trash-alt" style="font-size: 16px;"></i>
+                  </button>-->
+                  <!-- Modal -->
+                  <!--<div class="modal fade" id="deleteButton" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">刪除資訊確認</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          確定要刪除此筆餐廳資訊?
+                        </div>
+                        <div class="modal-footer">
+                          <a href="/" class="btn btn-outline-info ml-2">返回</a>
+                          <a href="/" class="btn btn-outline-danger ml-2">確認</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->
+
+
                 </div>
               </div>
             </div>

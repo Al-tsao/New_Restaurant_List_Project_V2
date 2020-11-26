@@ -86,12 +86,19 @@ app.get('/search', (req, res) => {
 app.get('/new', (req, res) => {
   res.render('new')
 })
-// 送出new頁面資料到MongoDB
+// 送出new頁面資料到MongoDB(新增資料)
 app.post('/new/create', (req, res) => {
   const newRestaurenat = req.body       // 從 req.body 拿出表單裡的 name 資料
-  console.log(newRestaurenat)
   return listGenerated.create(newRestaurenat)     // 存入資料庫，create(這裡面的格式要是物件)
     .then(() => res.redirect('/')) // 新增完成後導回首頁
+    .catch(error => console.log(error))
+})
+// 刪除餐廳資料
+app.get('/delete/:id', (req, res) => {
+  const id = req.params.id
+  return listGenerated.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 // =========== routes setting End ===========
