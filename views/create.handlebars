@@ -1,5 +1,5 @@
-<div class="container mt-3">
-  <form action="/new/create" method="POST">
+<div class="container mt-2">
+  <form action="/create/new" method="POST">
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="name">中文名稱</label>
@@ -38,15 +38,16 @@
       <div class="form-group col-md-2">
         <label for="rating">評分</label>
         <select name="rating" value="" id="rating" class="form-control">
-          <option selected>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option {{#ifEqual restaurant.rating '1'}} selected {{/ifEqual}}>1</option>
+          <option {{#ifEqual restaurant.rating '2'}} selected {{/ifEqual}}>2</option>
+          <option {{#ifEqual restaurant.rating '3'}} selected {{/ifEqual}}>3</option>
+          <option {{#ifEqual restaurant.rating '4'}} selected {{/ifEqual}}>4</option>
+          <option {{#ifEqual restaurant.rating '5'}} selected {{/ifEqual}}>5</option>
         </select>
         <p class="blockquote-footer">評價越好分數越高</p>
       </div>
     </div>
     <button type="submit" class="btn btn-outline-info btn-lg">建立新餐廳</button>
+    <a href="/" class="btn btn-outline-info btn-lg">返回主頁</a>
   </form>
 </div>

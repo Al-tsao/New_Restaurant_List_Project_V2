@@ -18,7 +18,7 @@
   </div>
 
   <div class="row justify-content-end info-bar">
-    <a href="/new" class="btn btn-info btn-lg">新增餐廳</a>
+    <a href="/create" class="btn btn-info btn-lg">新增餐廳</a>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
-        <a href="/show/{{this._id}}" class="text-secondary">
+        <a href="/read/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -44,8 +44,8 @@
               </span>
               <div class="mt-1 container">
                 <div class="row justify-content-end">
-                  <a href="/show/{{this._id}}" class="btn btn-outline-info">Detail</a>
-                  <a href="#" class="btn btn-outline-dark ml-2">Edit</a>
+                  <a href="/read/{{this._id}}" class="btn btn-outline-info">Detail</a>
+                  <a href="/update/{{this._id}}" class="btn btn-outline-dark ml-2">Edit</a>
                   <form action="/delete/{{ this._id }}" method="GET" onsubmit="return deleteAlert()">
                     <button type="submit" class="btn btn-outline-danger ml-2">
                       <i class="fas fa-trash-alt" style="font-size: 16px;"></i>
