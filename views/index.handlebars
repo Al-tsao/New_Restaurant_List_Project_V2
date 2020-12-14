@@ -45,21 +45,21 @@
               <div class="mt-1 container">
                 <div class="row justify-content-end">
                   <a href="/read/{{this._id}}" class="btn btn-outline-info">Detail</a>
-                  <a href="/update/{{this._id}}" class="btn btn-outline-dark ml-2">Edit</a>
+                  <!-- <a href="/update/{{this._id}}" class="btn btn-outline-dark ml-2">Edit</a>
                   <form action="/delete/{{ this._id }}" method="GET" onsubmit="return deleteAlert()">
                     <button type="submit" class="btn btn-outline-danger ml-2">
                       <i class="fas fa-trash-alt" style="font-size: 16px;"></i>
                     </button>
-                  </form>
+                  </form>-->
 
 
                   <!-- Button trigger modal -->
-                  <!--<button type="button" class="btn btn-outline-danger ml-2" data-toggle="modal"
+                  <button type="button" class="btn btn-outline-danger ml-2" data-toggle="modal"
                     data-target="#deleteButton" value="{{this._id}}">
                     <i class="fas fa-trash-alt" style="font-size: 16px;"></i>
-                  </button>-->
+                  </button>
                   <!-- Modal -->
-                  <!--<div class="modal fade" id="deleteButton" tabindex="-1" role="dialog"
+                  <div class="modal fade" id="deleteButton" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -74,11 +74,11 @@
                         </div>
                         <div class="modal-footer">
                           <a href="/" class="btn btn-outline-info ml-2">返回</a>
-                          <a href="/" class="btn btn-outline-danger ml-2">確認</a>
+                          <a href="/delete/{{ this._id }}" class="btn btn-outline-danger ml-2">確認</a>
                         </div>
                       </div>
                     </div>
-                  </div>-->
+                  </div>
 
 
                 </div>

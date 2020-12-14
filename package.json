@@ -1,8 +1,8 @@
 {
-  "name": "RestaurantListV1",
+  "name": "RestaurantListV2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "seed": "node models/seeds/restaurantListSeeder.js",

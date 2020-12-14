@@ -96,7 +96,7 @@ app.post('/create/new', (req, res) => {
 // 刪除餐廳資料
 app.get('/delete/:id', (req, res) => {
   const id = req.params.id
-  return listGenerated.findById(id)
+  listGenerated.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
